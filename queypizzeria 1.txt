@@ -33,14 +33,14 @@ WHERE ordini.id_cliente = clienti.id
   AND pizze_ingredienti.nome_ingredienti = ''
 
 SELECT cliente.id, clienti.nome, clienti.cognome, COUNT(ordini.id_cliente) AS numero_ordini
-FROM clienti LEFT JOIN ordini 
+FROM clienti JOIN ordini 
   ON clienti.id = ordini.id_cliente
 GROUP BY clienti.nome, clienti.cognome
 ORDER BY numero_ordini DESC
 LIMIT 1;
 
 SELECT cliente.id, clienti.nome, clienti.cognome, COUNT(ordini.id_cliente) AS numero_ordini
-FROM clienti LEFT JOIN ordini 
+FROM clienti JOIN ordini 
   ON clienti.id = ordini.cliente_id 
 WHERE ordini.data = ''
 GROUP BY clienti.nome, clienti.cognome
@@ -48,7 +48,7 @@ ORDER BY numero_ordini DESC
 LIMIT 1;
 
 SELECT cliente.id, clienti.nome, clienti.cognome, COUNT(ordini.id_cliente) AS numero_ordini
-FROM clienti LEFT JOIN ordini
+FROM clienti JOIN ordini
   ON clienti.id = ordini.cliente_id 
 WHERE ordini.data = ''
   AND ordini.id = ordini_pizze.id_ordine
